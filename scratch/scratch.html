@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Scratch Page (From Scratch)</title>
+<link href="scratch.css" rel="stylesheet"/>
+<!-- Tableau Embedding API v3 (required for interactive viz) -->
+<script src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" type="module"></script>
+</head>
+<body>
+<!-- Div #1: header -->
+<div class="wrapper" id="top">
+<div class="header">
+<h1>Scratch Page (Built From Scratch)</h1>
+<p>This page intentionally uses plain HTML + a custom CSS file (no Bootstrap) to demonstrate core web fundamentals.</p>
+<div class="nav">
+<!-- Navigation back to professional pages -->
+<a href="../index.html">Back to Professional Site</a>
+<a href="../resume.html">Résumé (HTML)</a>
+<a href="../grad.html">Graduate Focus Page</a>
+<!-- Link to the small web app page -->
+<a href="app.html">Open the Small Web App</a>
+<!-- On-page anchor -->
+<a href="#tableau">Jump to Tableau Viz</a>
+</div>
+</div>
+<div class="grid">
+<!-- Div #2: left content -->
+<div class="panel">
+<span class="badge">Requirement: nested lists</span>
+<h2>Nested List Demo (Ordered + Unordered)</h2>
+<p class="muted">This shows an unordered list embedded inside an ordered list.</p>
+<ol>
+<li>Hobby topic ideas
+            <ul>
+<li>Building small interactive simulations</li>
+<li>Designing clear learning experiences</li>
+<li>Turning research insights into product features</li>
+</ul>
+</li>
+<li>Why I care about it
+            <ul>
+<li>It improves communication and reduces confusion</li>
+<li>It helps users make safer, more confident decisions online</li>
+</ul>
+</li>
+<li>What I’m practicing here
+            <ul>
+<li>Clean page structure</li>
+<li>Readable color contrast</li>
+<li>Embedding external interactive media</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<span class="badge">Requirement: non-theme image</span>
+<h2>Image (Local Asset)</h2>
+<p class="muted">This image is stored in the repo (not from a Bootstrap theme).</p>
+<div class="media">
+<img alt="Local illustration used on the scratch page" src="../assets/hobby.svg"/>
+</div>
+<hr/>
+<span class="badge">Requirement: embedded YouTube video</span>
+<h2>YouTube Video Embed</h2>
+
+
+<p class="muted">Gaming is one of my favorite ways to relax and stay sharp. Below are a few videos related to the games I enjoy.</p><ul class="interest-list"><li>League of Legends (MOBA) — team strategy, communication, and continuous improvement.</li><li>Delta Force / tactical shooters — coordination, map control, and objective play.</li></ul><div class="video-grid"><div class="video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/xYJWHE24ouY" title="League of Legends — Season 2024 Cinematic"></iframe></div><div class="video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/5FrhtahQiRc" title="League of Legends — Worlds 2024 Anthem"></iframe></div><div class="video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/vEPZ60AnKpg" title="Delta Force — Official Announcement Trailer"></iframe></div></div><p class="muted">Note: YouTube embeds may be blocked when opening the file locally, but will work once hosted online.</p></div>
+<!-- Div #3: right content -->
+<div class="panel">
+<span class="badge">Requirement: custom background</span>
+<h2>Custom Background</h2>
+<p class="muted">
+          The page background is a custom radial-gradient defined in <code>scratch.css</code>.
+        </p>
+<hr/>
+<span class="badge">Requirement: on-page anchor</span>
+<h2>Anchor Navigation</h2>
+<p class="muted">
+          Use “Jump to Tableau Viz” in the top navigation, or click:
+          <a href="#tableau">Go to Tableau section</a>.
+        </p>
+<hr/>
+<span class="badge">Requirement: link to app</span>
+<h2>Small Web App</h2>
+<p class="muted">
+          The course requires a small AI-assisted web app on a single page. Mine is linked here:
+          <a href="app.html">Small Web App</a>.
+        </p>
+<hr/>
+<h2>Back to Top</h2>
+<p class="muted">
+<a href="#top">Return to page top</a>
+</p>
+</div>
+</div>
+<div class="panel" id="tableau" style="margin-top:16px;">
+<span class="badge">Requirement: interactive embedded Tableau</span>
+<h2>Interactive Tableau Visualization</h2>
+<p class="muted">
+        This is a live Tableau Public embed using the Embedding API v3 web component. Try interacting with the view.
+      </p>
+<div class="media" style="padding: 10px; background: rgba(15,23,42,0.03);">
+<tableau-viz hide-tabs="" id="tableauViz" src="https://public.tableau.com/views/RegionalSampleWorkbook/Stocks" style="width:100%; height:620px;" toolbar="bottom">
+</tableau-viz>
+</div>
+<p class="muted" style="margin-top:12px;">
+        If this viz ever changes or breaks, replace the <code>src</code> with a different Tableau Public view link.
+      </p>
+</div>
+<p class="muted" style="margin-top:14px; color: rgba(229,231,235,0.75);">
+      Note: This scratch page links back to the professional pages, but the professional pages do not link here.
+    </p>
+</div>
+</body>
+</html>
