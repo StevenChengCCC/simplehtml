@@ -1,117 +1,118 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Scratch • Steven Cheng</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Scratch</title>
   <link rel="stylesheet" href="scratch.css">
+  <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
 </head>
 <body>
+  <nav class="topnav">
+    <a href="../index.html">Home</a>
+    <a href="../resume.html">Résumé</a>
+    <a href="../grad.html">Graduate Focus</a>
+    <a href="./app.html">Mini App</a>
+    <a href="#interests">Interests</a>
+    <a href="#tableau">Tableau</a>
+    <a href="#top">Top</a>
+  </nav>
 
-<div class="topbar">
-  <div class="container">
-    <div class="nav">
-      <div class="links">
-        <a href="../index.html">Home</a>
-        <a href="../resume.html">Résumé</a>
-        <a href="../grad.html">Graduate Focus</a>
-        <a href="app.html">Mini App</a>
-      </div>
-      <div class="links">
-        <a href="#interests">Interests</a>
-        <a href="#tableau">Tableau</a>
-        <a href="#top">Top</a>
-      </div>
+  <div id="top" class="wrapper">
+    <div class="hero">
+      <h1>Scratch Page</h1>
+      <p>Plain HTML + a custom stylesheet, with embedded media and a small interactive app.</p>
     </div>
-  </div>
-</div>
 
-<div class="container" id="top">
-  <div class="header">
-    <h1>Scratch</h1>
-    <p>A simple page where I collect a few interests, notes, and embedded media I like.</p>
-  </div>
+    <div class="grid">
+      <div class="card">
+        <div class="head">
+          <h2>Nested Lists</h2>
+          <p>A quick list structure demo using an ordered list with an embedded unordered list.</p>
+        </div>
+        <div class="body">
+          <ol>
+            <li>Hobby topic ideas
+              <ul>
+                <li>Building small interactive simulations</li>
+                <li>Designing clear learning experiences</li>
+                <li>Turning research insights into product features</li>
+              </ul>
+            </li>
+            <li>Why I care about it
+              <ul>
+                <li>It improves communication and reduces confusion</li>
+                <li>It helps users make safer, more confident decisions online</li>
+              </ul>
+            </li>
+            <li>What I’m practicing here
+              <ul>
+                <li>Clean page structure</li>
+                <li>Readable color contrast</li>
+                <li>Embedding external interactive media</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
 
-  <div class="grid">
-    <div class="card">
-      <h2>What I’m into lately</h2>
-      <p>
-        I enjoy competitive and tactical games. Right now my favorites are <strong>League of Legends</strong> and
-        <strong>Delta Force</strong>—one for teamwork + strategy, the other for squad coordination and pacing.
-      </p>
+        <div class="head" id="interests" style="border-top:1px solid rgba(15,23,42,.10); margin-top:8px;">
+          <h2>My Gaming Interests</h2>
+          <p>I enjoy competitive and tactical games. My favorites right now are League of Legends and Delta Force.</p>
+        </div>
+        <div class="body">
+          <ol>
+            <li><strong>League of Legends</strong>
+              <ul>
+                <li>Mainly play ranked and ARAM with friends</li>
+                <li>Enjoy matchups, macro decisions, and objective control</li>
+              </ul>
+            </li>
+            <li><strong>Delta Force</strong>
+              <ul>
+                <li>Team-based tactical gameplay</li>
+                <li>Clear callouts and coordination matter more than raw mechanics</li>
+              </ul>
+            </li>
+            <li><strong>Other games</strong>
+              <ul>
+                <li>Single-player story games when I want to relax</li>
+                <li>Co-op games when I want light teamwork</li>
+              </ul>
+            </li>
+          </ol>
 
-      <ol>
-        <li>
-          League of Legends
-          <ul>
-            <li>Mostly ranked + ARAM with friends</li>
-            <li>I enjoy learning matchups, macro decisions, and objective control</li>
-            <li>I like roles that reward communication (jungle / support)</li>
-          </ul>
-        </li>
-        <li>
-          Delta Force
-          <ul>
-            <li>Team-based tactical gameplay</li>
-            <li>Clear callouts and coordination matter more than raw mechanics</li>
-          </ul>
-        </li>
-        <li>
-          Other games I rotate through
-          <ul>
-            <li>Single‑player story games when I want to relax</li>
-            <li>Co‑op games when I want light teamwork</li>
-          </ul>
-        </li>
-      </ol>
-
-      <hr>
-
-      <section id="interests">
-        <h2>Gaming highlights</h2>
-        <p class="small">A screenshot + two videos that match the games above.</p>
-
-        <div class="media-grid">
-          <div>
-            <img class="heroimg" src="../assets/delta-force.png" alt="Delta Force themed image">
-            <p class="small">Image file is hosted with this site (not from a theme).</p>
-          </div>
-          <div>
-            <iframe class="video" src="https://www.youtube.com/embed/-USgpvI2WvM" title="League of Legends - Still Here"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-            <div style="height:12px"></div>
-            <iframe class="video" src="https://www.youtube.com/embed/vEPZ60AnKpg" title="Delta Force trailer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
+          <div class="split" style="margin-top:14px;">
+            <div>
+              <img class="media-img" src="../assets/delta-force.png" alt="Gaming image (local)">
+            </div>
+            <div>
+              <iframe class="yt" src="https://www.youtube.com/embed/-USgpvI2WvM" title="League of Legends cinematic" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div style="height:12px"></div>
+              <iframe class="yt" src="https://www.youtube.com/embed/vEPZ60AnKpg" title="Delta Force trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
+      <div class="card" id="tableau">
+        <div class="head">
+          <h2>Interactive Tableau Visualization</h2>
+          <p>Embedded Tableau Public visualization (interactive).</p>
+        </div>
+        <div class="tableau-wrap">
+          <div class="tableau-box">
+            <tableau-viz
+              id="tableauViz"
+              src="https://public.tableau.com/views/RegionalSampleWorkbook/Stocks?:language=en-US&:display_count=n&:origin=viz_share_link"
+              toolbar="bottom"
+              hide-tabs>
+            </tableau-viz>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card" id="tableau">
-      <h2>Tableau</h2>
-      <p>One interactive Tableau Public view I like exploring. Filters and tooltips should work directly on this page.</p>
-
-      <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
-
-      <tableau-viz
-        id="tableauViz"
-        style="width:100%; height:640px;"
-        src="https://public.tableau.com/views/RegionalSampleWorkbook/Stocks"
-        toolbar="bottom"
-        hide-tabs>
-      </tableau-viz>
-
-      <p class="small" style="margin-top:10px;">
-        If the viz takes a moment to load, give it a second—Tableau is embedded live.
-      </p>
-    </div>
+    <div class="footer">© 2025 Steven Cheng.</div>
   </div>
-
-  <div class="footer">© 2025 Steven Cheng.</div>
-</div>
-
 </body>
 </html>

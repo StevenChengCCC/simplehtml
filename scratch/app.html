@@ -1,143 +1,98 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mini App • Quick Guess</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Mini Web App</title>
   <style>
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(900px 600px at 15% 10%, rgba(59,130,246,0.22), transparent 60%),
-                  radial-gradient(900px 600px at 85% 10%, rgba(34,197,94,0.16), transparent 60%),
-                  #0b1220;
-      color: rgba(255,255,255,0.92);
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 20px;
-    }
-    .card{
-      width: min(720px, 100%);
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
-      backdrop-filter: blur(12px);
-    }
-    h1{ margin: 0 0 8px; font-size: 22px; letter-spacing: .02em; }
-    p{ margin: 8px 0; color: rgba(255,255,255,0.78); line-height: 1.6; }
-    .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top: 14px; }
-    input{
-      flex: 1;
-      min-width: 180px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.20);
-      color: rgba(255,255,255,0.92);
-      outline: none;
-      font-size: 16px;
-    }
-    button, a.btn{
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.10);
-      color: rgba(255,255,255,0.92);
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 650;
-    }
-    button:hover, a.btn:hover{ background: rgba(255,255,255,0.16); }
-    .status{
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 14px;
-      background: rgba(0,0,0,0.22);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.82);
-      min-height: 52px;
-    }
-    .small{ font-size: 13px; opacity: .75; margin-top: 14px; }
-    .pill{
-      display:inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.06);
-      margin-left: 6px;
-      font-size: 12px;
-    }
+    :root{ --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --accent:#22c55e; --border: rgba(148,163,184,.18); }
+    html,body{height:100%}
+    body{margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background: radial-gradient(1200px 900px at 20% 0%, #1e293b 0%, var(--bg) 55%, #020617 100%); color: var(--text);}
+    a{color:#38bdf8; text-decoration:none; font-weight:700}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:860px; margin:28px auto 60px; padding:0 16px;}
+    .top{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;}
+    .pill{border:1px solid var(--border); background: rgba(255,255,255,.06); border-radius:999px; padding:10px 12px; }
+    .card{margin-top:16px; border:1px solid var(--border); background: rgba(15,23,42,.80); border-radius:18px; padding:18px; box-shadow: 0 20px 60px rgba(0,0,0,.35);}
+    h1{margin:0; font-size:22px; letter-spacing:.06em}
+    .q{font-size:18px; margin:10px 0 12px}
+    .opts{display:grid; gap:10px;}
+    button{appearance:none; border:1px solid var(--border); background: rgba(255,255,255,.06); color: var(--text); padding:12px 12px; border-radius:14px; font-weight:700; cursor:pointer; text-align:left;}
+    button:hover{background: rgba(255,255,255,.10)}
+    .row{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; align-items:center;}
+    .score{color: var(--muted); font-weight:700;}
+    .good{color:#22c55e;}
+    .bad{color:#ef4444;}
+    .primary{background: rgba(34,197,94,.14); border-color: rgba(34,197,94,.35);}
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Quick Guess <span class="pill" id="triesPill">0 tries</span></h1>
-    <p>
-      Guess the secret number between <strong>1</strong> and <strong>100</strong>.
-      I’ll tell you whether you’re too high or too low.
-    </p>
-
-    <div class="row">
-      <input id="guess" type="number" min="1" max="100" placeholder="Enter a number (1–100)" />
-      <button id="btnGuess">Guess</button>
-      <button id="btnReset">Reset</button>
-      <a class="btn" href="scratch.html">Back</a>
+  <div class="wrap">
+    <div class="top">
+      <div class="pill"><a href="./scratch.html">← Back to Scratch</a></div>
+      <div class="pill"><a href="../index.html">Home</a> · <a href="../resume.html">Résumé</a> · <a href="../grad.html">Graduate Focus</a></div>
     </div>
 
-    <div class="status" id="status">New game started. Good luck.</div>
-    <div class="small">Tip: press Enter to submit.</div>
+    <div class="card">
+      <h1>Social Media Safety Micro‑Quiz</h1>
+      <div class="q" id="q"></div>
+      <div class="opts" id="opts"></div>
+      <div class="row">
+        <div class="score" id="status"></div>
+        <button class="primary" id="next" style="display:none;">Next</button>
+        <button id="restart" style="display:none;">Restart</button>
+      </div>
+    </div>
   </div>
 
-  <script>
-    let secret = 0;
-    let tries = 0;
+<script>
+const questions = [
+  {q:"A stranger asks for your phone number in DMs. Best first move?", a:["Share it if they seem friendly","Ask why they need it and keep personal info private","Send your address instead","Ignore privacy settings forever"], correct:1},
+  {q:"You see a post that makes you feel overwhelmed. What helps most?", a:["Keep scrolling faster","Use mute/limit controls or take a break","Argue in comments","Turn on autoplay"], correct:1},
+  {q:"You’re unsure what a slang term means. What is safest?", a:["Assume it’s harmless","Look it up from a reliable glossary / context","Reply with it immediately","DM it to everyone"], correct:1},
+  {q:"Which is a good default for public profiles?", a:["Share location in every post","Minimize personal identifiers and review privacy settings","Accept every follow request","Post passwords as jokes"], correct:1},
+  {q:"Someone sends a link that looks suspicious. What should you do?", a:["Click immediately","Verify the sender + URL before opening","Forward to friends","Disable updates"], correct:1},
+];
+let i=0, score=0, locked=false;
+const qEl=document.getElementById("q");
+const opts=document.getElementById("opts");
+const status=document.getElementById("status");
+const next=document.getElementById("next");
+const restart=document.getElementById("restart");
 
-    function newGame(){
-      secret = Math.floor(Math.random() * 100) + 1;
-      tries = 0;
-      document.getElementById('triesPill').textContent = '0 tries';
-      document.getElementById('status').textContent = 'New game started. Good luck.';
-      const input = document.getElementById('guess');
-      input.value = '';
-      input.focus();
-    }
-
-    function setStatus(msg){
-      document.getElementById('status').textContent = msg;
-    }
-
-    function submitGuess(){
-      const input = document.getElementById('guess');
-      const val = Number(input.value);
-
-      if (!Number.isFinite(val) || val < 1 || val > 100){
-        setStatus('Please enter an integer between 1 and 100.');
-        return;
-      }
-
-      tries += 1;
-      document.getElementById('triesPill').textContent = tries + (tries === 1 ? ' try' : ' tries');
-
-      if (val === secret){
-        setStatus('Correct! ' + secret + ' is the secret number. You got it in ' + tries + ' tries.');
-      } else if (val < secret){
-        setStatus('Too low. Try a higher number.');
-      } else {
-        setStatus('Too high. Try a lower number.');
-      }
-      input.select();
-    }
-
-    document.getElementById('btnGuess').addEventListener('click', submitGuess);
-    document.getElementById('btnReset').addEventListener('click', newGame);
-    document.getElementById('guess').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') submitGuess();
-    });
-
-    newGame();
-  </script>
+function render(){
+  locked=false;
+  next.style.display="none";
+  restart.style.display="none";
+  const item=questions[i];
+  qEl.textContent = `Q${i+1}/${questions.length}: ${item.q}`;
+  opts.innerHTML="";
+  item.a.forEach((txt,idx)=>{
+    const b=document.createElement("button");
+    b.textContent = txt;
+    b.onclick=()=>choose(idx,b);
+    opts.appendChild(b);
+  });
+  status.textContent = `Score: ${score}`;
+}
+function choose(idx,btn){
+  if(locked) return;
+  locked=true;
+  const correct = questions[i].correct;
+  const buttons=[...opts.querySelectorAll("button")];
+  buttons.forEach((b,j)=>{
+    if(j===correct) b.classList.add("primary");
+    if(j===idx && idx!==correct) b.classList.add("bad");
+    b.disabled=true;
+  });
+  if(idx===correct){ score++; status.innerHTML = `Score: ${score} <span class="good">✓ Correct</span>`; }
+  else{ status.innerHTML = `Score: ${score} <span class="bad">✗ Not quite</span>`; }
+  if(i < questions.length-1){ next.style.display="inline-block"; }
+  else{ restart.style.display="inline-block"; status.innerHTML += ` — Finished!`; }
+}
+next.onclick=()=>{ i++; render(); }
+restart.onclick=()=>{ i=0; score=0; render(); }
+render();
+</script>
 </body>
 </html>

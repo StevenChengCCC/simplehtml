@@ -1,29 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Steven Cheng • Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/site.css" rel="stylesheet">
-  <style>
-    body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-  </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
-  <div class="container py-2">
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container container-narrow">
     <a class="navbar-brand" href="index.html">STEVEN CHENG</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto gap-lg-3">
-        <li class="nav-item"><a class="nav-link active" href="index.html">HOME</a></li>
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
         <li class="nav-item"><a class="nav-link" href="resume.html">RÉSUMÉ</a></li>
         <li class="nav-item"><a class="nav-link" href="grad.html">GRADUATE FOCUS</a></li>
         <li class="nav-item"><a class="nav-link" href="scratch/scratch.html">SCRATCH</a></li>
@@ -35,114 +28,113 @@
   </div>
 </nav>
 
-<main class="container my-5">
-  <section class="hero p-4 p-lg-5">
+<main class="container container-narrow mt-4">
+  <section class="hero">
     <div class="row g-4 align-items-center">
       <div class="col-lg-7">
-        <h1 class="display-5 mb-3">Product-minded developer with an accessibility research background</h1>
-        <p class="lead text-secondary mb-4">
-          I build practical web products and data-driven prototypes, with a focus on clear UX and inclusive design.
-        </p>
+        <h1>Product-minded<br/>developer with an<br/>accessibility research<br/>background</h1>
+        <p>I build practical web products and data-driven prototypes, with a focus on clear UX and inclusive design.</p>
         <div class="d-flex flex-wrap gap-2">
-          <a class="btn btn-dark" href="resume.html">View Résumé</a>
-          <a class="btn btn-outline-dark" href="grad.html">Graduate Focus</a>
-          <a class="btn btn-outline-primary" href="scratch/scratch.html#interests">Interests</a>
-          <a class="btn btn-outline-primary" href="scratch/scratch.html#tableau">Tableau</a>
+          <a class="btn btn-primary btn-lg" href="resume.html">View Résumé</a>
+          <a class="btn btn-outline-secondary btn-lg" href="grad.html">Graduate Focus</a>
+          <a class="btn btn-outline-secondary btn-lg" href="scratch/scratch.html#interests">Interests</a>
+          <a class="btn btn-outline-secondary btn-lg" href="scratch/scratch.html#tableau">Tableau</a>
+        </div>
+        <div class="mt-3 text-secondary" style="max-width: 46ch;">
+          This site is intentionally lightweight and deploys cleanly on AWS Amplify.
         </div>
       </div>
       <div class="col-lg-5">
-        <div class="bg-white rounded-4 border p-4 shadow-sm">
-          <div class="text-uppercase text-secondary small fw-semibold mb-2">Highlights</div>
-          <ul class="mb-0">
-            <li>Full-stack web development (React / Node / AWS)</li>
-            <li>Data engineering & visualization (SQL / MongoDB / Tableau)</li>
-            <li>Accessibility & HCI research experience</li>
-            <li>Ship-focused: CI/CD, deployment, monitoring</li>
-          </ul>
+        <div class="cardx">
+          <div class="body">
+            <div class="section-title mb-2">HIGHLIGHTS</div>
+            <ul class="mb-0 text-secondary">
+              <li>Full-stack web development (React / Node / AWS)</li>
+              <li>Data engineering &amp; visualization (SQL / MongoDB / Tableau)</li>
+              <li>Accessibility &amp; HCI research experience</li>
+              <li>Ship-focused: CI/CD, deployment, monitoring</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="mt-5">
-    <div class="d-flex align-items-end justify-content-between mb-3">
-      <h2 class="h5 text-uppercase m-0" style="letter-spacing: .14em;">Projects</h2>
-      <div class="text-secondary">Live demos and write-ups</div>
+    <div class="d-flex justify-content-between align-items-end flex-wrap gap-2">
+      <div>
+        <div class="section-title">PROJECTS</div>
+        <div class="text-secondary">Live demos and write-ups</div>
+      </div>
     </div>
 
+    <div class="row g-4 mt-2">
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div style="aspect-ratio: 16/10; background:#0b1220; overflow:hidden;">
+            <iframe title="Social Media Academy" src="https://socialmediaacademy.click/" style="width:100%; height:100%; border:0;" loading="lazy"></iframe>
+          </div>
+          <div class="body">
+            <h3>Social Media Academy</h3>
+            <p>A learning site that helps users navigate social media safely, understand slang, and reduce cognitive load.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary" href="https://socialmediaacademy.click/" target="_blank" rel="noreferrer noopener">Open Live Site</a>
+              <a class="btn btn-outline-secondary" href="https://socialmediaacademy.click/play?embed=1" target="_blank" rel="noreferrer noopener">Open Play</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div style="aspect-ratio: 16/10; background:#0b1220; overflow:hidden;">
+            <iframe title="RPS Particle Simulation" src="https://socialmediaacademy.click/play?embed=1" style="width:100%; height:100%; border:0;" loading="lazy"></iframe>
+          </div>
+          <div class="body">
+            <h3>RPS Particle Simulation</h3>
+            <p>An interactive Rock–Paper–Scissors particle simulator with tunable density, speed, and particle size.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary" href="https://socialmediaacademy.click/play" target="_blank" rel="noreferrer noopener">Open Full Screen</a>
+              <a class="btn btn-outline-secondary" href="scratch/scratch.html#interests">Relevant: Interests</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-5">
     <div class="row g-4">
       <div class="col-lg-6">
-        <div class="card shadow-sm">
-          <div class="preview-frame">
-            <iframe src="https://socialmediaacademy.click/" title="Social Media Academy (Home)"></iframe>
-          </div>
-          <div class="card-body">
-            <div class="text-uppercase small text-secondary fw-semibold" style="letter-spacing: .12em;">Social Media Academy</div>
-            <p class="mt-2 text-secondary">
-              A learning site that helps users navigate social media safely, understand slang, and reduce cognitive load.
-            </p>
-            <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-dark btn-sm" href="https://socialmediaacademy.click/" target="_blank" rel="noreferrer noopener">Open Live Site</a>
-              <a class="btn btn-outline-dark btn-sm" href="https://socialmediaacademy.click/play?embed=1" target="_blank" rel="noreferrer noopener">Open Play</a>
-            </div>
-          </div>
-        </div>
+        <div class="cardx"><div class="body">
+          <div class="section-title mb-2">WHAT I OPTIMIZE FOR</div>
+          <div class="text-secondary">Clear interfaces, high signal-to-noise content, and measurable impact. If a user can’t quickly understand what to do next, the product is failing.</div>
+        </div></div>
       </div>
-
       <div class="col-lg-6">
-        <div class="card shadow-sm">
-          <div class="preview-frame">
-            <iframe src="https://socialmediaacademy.click/play?embed=1" title="RPS Particle Simulation (Embed)"></iframe>
+        <div class="cardx"><div class="body">
+          <div class="section-title mb-2">QUICK LINKS</div>
+          <div class="kbdlink">
+            <a href="scratch/scratch.html">Scratch Page</a>
+            <a href="scratch/scratch.html#tableau">Tableau Viz</a>
+            <a href="scratch/app.html">Mini Web App</a>
+            <a href="grad.html">Graduate Focus</a>
           </div>
-          <div class="card-body">
-            <div class="text-uppercase small text-secondary fw-semibold" style="letter-spacing: .12em;">RPS Particle Simulation</div>
-            <p class="mt-2 text-secondary">
-              An interactive Rock–Paper–Scissors particle simulator with tunable density, speed, and particle size.
-            </p>
-            <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-dark btn-sm" href="https://socialmediaacademy.click/play" target="_blank" rel="noreferrer noopener">Open Full Screen</a>
-              <a class="btn btn-outline-dark btn-sm" href="scratch/scratch.html#interests">Relevant: Interests</a>
-            </div>
-          </div>
-        </div>
+        </div></div>
       </div>
     </div>
   </section>
 
-  <section class="row g-4 mt-4">
-    <div class="col-lg-6">
-      <div class="bg-white border rounded-4 p-4 shadow-sm h-100">
-        <div class="text-uppercase small text-secondary fw-semibold mb-2" style="letter-spacing: .12em;">What I optimize for</div>
-        <p class="mb-0 text-secondary">
-          Clear interfaces, high signal-to-noise content, and measurable impact. If a user can’t quickly understand what to do next,
-          the product is failing.
-        </p>
+  <footer class="footer">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div>© 2025 Steven Cheng.</div>
+      <div class="d-flex gap-3">
+        <a href="https://github.com" target="_blank" rel="noreferrer noopener">GitHub</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer noopener">LinkedIn</a>
       </div>
     </div>
-    <div class="col-lg-6">
-      <div class="bg-white border rounded-4 p-4 shadow-sm h-100">
-        <div class="text-uppercase small text-secondary fw-semibold mb-2" style="letter-spacing: .12em;">Quick links</div>
-        <div class="d-flex flex-wrap gap-2">
-          <a class="btn btn-outline-primary btn-sm" href="scratch/scratch.html">Scratch Page</a>
-          <a class="btn btn-outline-primary btn-sm" href="scratch/scratch.html#tableau">Tableau Viz</a>
-          <a class="btn btn-outline-primary btn-sm" href="scratch/app.html">Mini Web App</a>
-          <a class="btn btn-outline-primary btn-sm" href="grad.html">Graduate Focus</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  </footer>
 </main>
-
-<footer class="border-top py-4">
-  <div class="container d-flex flex-wrap gap-3 align-items-center justify-content-between footer">
-    <div>© 2025 Steven Cheng.</div>
-    <div class="d-flex gap-3">
-      <a href="https://github.com/" target="_blank" rel="noreferrer noopener" class="text-decoration-none">GitHub</a>
-      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener" class="text-decoration-none">LinkedIn</a>
-    </div>
-  </div>
-</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

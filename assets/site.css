@@ -1,41 +1,102 @@
 :root{
-  --card-radius: 18px;
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #4b5563;
+  --border: rgba(17,24,39,.12);
+  --shadow: 0 10px 30px rgba(17,24,39,.08);
+  --accent: #0f766e;
+  --accent-2:#1d4ed8;
 }
-
-.navbar-brand{
-  letter-spacing: 0.06em;
-  font-weight: 700;
+html,body{height:100%}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 20% 0%, #eef2ff 0%, var(--bg) 55%, #ffffff 100%);
+  color: var(--text);
 }
-
+a{color: var(--accent-2); text-decoration: none}
+a:hover{ text-decoration: underline }
+.navbar{ border-bottom: 1px solid var(--border); background: rgba(255,255,255,.92)!important; backdrop-filter: blur(10px);}
+.navbar-brand{ letter-spacing:.08em; font-weight:800 }
+.nav-link{ font-weight:600; letter-spacing:.06em; color:#111827!important; opacity:.75 }
+.nav-link:hover{ opacity:1 }
+.container-narrow{ max-width: 1040px; }
 .hero{
-  background: linear-gradient(135deg, rgba(13,110,253,0.08), rgba(25,135,84,0.06));
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 22px;
+  background: linear-gradient(180deg, #e8f4ff 0%, #f7fbff 60%, #ffffff 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 42px;
 }
-
-.hero h1{
-  letter-spacing: 0.04em;
+.hero h1{ font-size: 44px; letter-spacing:.04em; line-height:1.05; margin: 0 0 10px}
+.hero p{ color: var(--muted); font-size: 18px; margin: 0 0 18px}
+.pill{
+  display:inline-flex; align-items:center; gap:10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.8);
 }
-
-.preview-frame{
-  width: 100%;
-  height: 340px;
-  border: 1px solid rgba(0,0,0,0.12);
+.section-title{ letter-spacing:.18em; font-weight:800; font-size:14px; color:#111827; opacity:.7 }
+.cardx{
+  border: 1px solid var(--border);
   border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(17,24,39,.07);
   overflow: hidden;
-  background: #fff;
+  background: var(--card);
 }
-
-.preview-frame iframe{
-  width: 100%;
-  height: 100%;
-  border: 0;
+.cardx .body{ padding: 18px 18px 16px; }
+.cardx h3{ font-size: 18px; margin:0 0 8px; letter-spacing:.08em }
+.cardx p{ margin:0 0 14px; color: var(--muted); }
+.btn-primary{
+  background: #111827; border-color:#111827;
 }
-
-.card{
-  border-radius: var(--card-radius);
-}
-
+.btn-primary:hover{ background:#0b1220; border-color:#0b1220;}
+.btn-outline-secondary{ border-color: rgba(17,24,39,.25); color:#111827;}
+.btn-outline-secondary:hover{ background: rgba(17,24,39,.06); border-color: rgba(17,24,39,.35); color:#111827;}
 .footer{
-  color: rgba(0,0,0,0.6);
+  color: var(--muted);
+  padding: 40px 0 60px;
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+}
+.kbdlink{ display:inline-flex; gap:10px; flex-wrap:wrap; }
+.kbdlink a{ padding:10px 12px; border:1px solid var(--border); border-radius:12px; background: rgba(255,255,255,.7); color: #111827; font-weight:600; }
+.kbdlink a:hover{ background:#fff; text-decoration:none }
+.resume-header{
+  padding: 10px 0 0;
+}
+.resume-header h1{ margin: 28px 0 6px; font-size: 42px; letter-spacing:.02em }
+.resume-header .meta{ color: var(--muted); font-weight:600 }
+.resume-section{ margin-top: 26px;}
+.resume-section h2{
+  font-size: 16px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  color: #111827;
+  opacity: .8;
+}
+.resume-item{
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: 0 6px 20px rgba(17,24,39,.06);
+  padding: 18px 18px 16px;
+  margin-bottom: 14px;
+}
+.resume-item .topline{ display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+.resume-item .role{ font-weight:800; }
+.resume-item .where{ color: var(--muted); font-weight:700 }
+.resume-item ul{ margin: 10px 0 0 18px; color: #111827; }
+.resume-item li{ margin: 4px 0; color: #1f2937 }
+.badge-skill{
+  display:inline-block;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255,255,255,.75);
+  margin: 6px 8px 0 0;
+  font-weight:700;
+  color:#111827;
 }
