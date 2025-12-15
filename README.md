@@ -26,4 +26,3 @@ This folder contains a minimal static website designed to satisfy the course req
 - Professional site: `/index.html`
 - Scratch page: `/scratch/scratch.html`
 - Web app page: `/scratch/app.html`
-# simplehtml
