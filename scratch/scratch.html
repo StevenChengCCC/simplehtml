@@ -1,160 +1,117 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Scratch Page (From Scratch)</title>
-<link href="scratch.css" rel="stylesheet"/>
-<!-- Tableau Embedding API v3 (required for interactive viz) -->
-<script src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" type="module"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scratch • Steven Cheng</title>
+  <link rel="stylesheet" href="scratch.css">
 </head>
 <body>
-<!-- Div #1: header -->
-<div class="wrapper" id="top">
-<div class="header">
-<h1>Scratch Page (Built From Scratch)</h1>
-<p>This page intentionally uses plain HTML + a custom CSS file (no Bootstrap) to demonstrate core web fundamentals.</p>
-<div class="nav">
-<!-- Navigation back to professional pages -->
-<a href="../index.html">Back to Professional Site</a>
-<a href="../resume.html">Résumé (HTML)</a>
-<a href="../grad.html">Graduate Focus Page</a>
-<!-- Link to the small web app page -->
-<a href="app.html">Open the Small Web App</a>
-<!-- On-page anchor -->
-<a href="#tableau">Jump to Tableau Viz</a>
-</div>
-</div>
-<div class="grid">
-<!-- Div #2: left content -->
-<div class="panel">
-<span class="badge">Requirement: nested lists</span>
-<h2>Nested List Demo (Ordered + Unordered)</h2>
-<p class="muted">This shows an unordered list embedded inside an ordered list.</p>
-<ol>
-<li>Hobby topic ideas
-            <ul>
-<li>Building small interactive simulations</li>
-<li>Designing clear learning experiences</li>
-<li>Turning research insights into product features</li>
-</ul>
-</li>
-<li>Why I care about it
-            <ul>
-<li>It improves communication and reduces confusion</li>
-<li>It helps users make safer, more confident decisions online</li>
-</ul>
-</li>
-<li>What I’m practicing here
-            <ul>
-<li>Clean page structure</li>
-<li>Readable color contrast</li>
-<li>Embedding external interactive media</li>
-</ul>
-</li>
-</ol>
-<hr/>
-<span class="badge">Requirement: non-theme image</span>
-<h2>My Gaming Interests</h2>
-<p class="muted">
-  I enjoy competitive and tactical games. My favorites right now are <strong>League of Legends</strong> and <strong>Delta Force</strong>.
-  I like LoL for the teamwork, strategy, and constant improvement loop; and Delta Force for its tactical pacing and squad coordination.
-</p>
 
-<ol class="interest-list">
-  <li><strong>League of Legends</strong>
-    <ul>
-      <li>Mainly play ranked and ARAM with friends</li>
-      <li>I like learning matchups, macro decisions, and objective control</li>
-    </ul>
-  </li>
-  <li><strong>Delta Force</strong>
-    <ul>
-      <li>I enjoy the tactical gameplay and team-based decision making</li>
-      <li>I’m interested in how the game balances realism vs. accessibility</li>
-    </ul>
-  </li>
-</ol>
-
-<div class="media">
-  <img alt="A drawing representing my interest in Delta Force and tactical games" src="../assets/delta-force.png"/>
-</div>
-
-<hr/>
-<span class="badge">Requirement: embedded YouTube video</span>
-<h2>YouTube Video Embed</h2>
-
-<p class="muted">
-  Here are two short videos that capture the kind of gameplay and esports energy I enjoy.
-  (YouTube embeds may not play when opening the file locally, but will work once the site is hosted.)
-</p>
-
-<div class="video-grid">
-  <div class="video">
-    <iframe
-      src="https://www.youtube.com/embed/-USgpvI2WvM"
-      title="Still Here | Season 2024 Cinematic - League of Legends"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
-  </div>
-
-  <div class="video">
-    <iframe
-      src="https://www.youtube.com/embed/vEPZ60AnKpg"
-      title="Delta Force | Official Announcement Trailer"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
+<div class="topbar">
+  <div class="container">
+    <div class="nav">
+      <div class="links">
+        <a href="../index.html">Home</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../grad.html">Graduate Focus</a>
+        <a href="app.html">Mini App</a>
+      </div>
+      <div class="links">
+        <a href="#interests">Interests</a>
+        <a href="#tableau">Tableau</a>
+        <a href="#top">Top</a>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Div #3: right content -->
-<div class="panel">
-<span class="badge">Requirement: custom background</span>
-<h2>Custom Background</h2>
-<p class="muted">
-          The page background is a custom radial-gradient defined in <code>scratch.css</code>.
-        </p>
-<hr/>
-<span class="badge">Requirement: on-page anchor</span>
-<h2>Anchor Navigation</h2>
-<p class="muted">
-          Use “Jump to Tableau Viz” in the top navigation, or click:
-          <a href="#tableau">Go to Tableau section</a>.
-        </p>
-<hr/>
-<span class="badge">Requirement: link to app</span>
-<h2>Small Web App</h2>
-<p class="muted">
-          The course requires a small AI-assisted web app on a single page. Mine is linked here:
-          <a href="app.html">Small Web App</a>.
-        </p>
-<hr/>
-<h2>Back to Top</h2>
-<p class="muted">
-<a href="#top">Return to page top</a>
-</p>
-</div>
-</div>
-<div class="panel" id="tableau" style="margin-top:16px;">
-<span class="badge">Requirement: interactive embedded Tableau</span>
-<h2>Interactive Tableau Visualization</h2>
-<p class="muted">
-        This is a live Tableau Public embed using the Embedding API v3 web component. Try interacting with the view.
+<div class="container" id="top">
+  <div class="header">
+    <h1>Scratch</h1>
+    <p>A simple page where I collect a few interests, notes, and embedded media I like.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>What I’m into lately</h2>
+      <p>
+        I enjoy competitive and tactical games. Right now my favorites are <strong>League of Legends</strong> and
+        <strong>Delta Force</strong>—one for teamwork + strategy, the other for squad coordination and pacing.
       </p>
-<div class="media" style="padding: 10px; background: rgba(15,23,42,0.03);">
-<tableau-viz hide-tabs="" id="tableauViz" src="https://public.tableau.com/views/RegionalSampleWorkbook/Stocks" style="width:100%; height:620px;" toolbar="bottom">
-</tableau-viz>
-</div>
-<p class="muted" style="margin-top:12px;">
-        If this viz ever changes or breaks, replace the <code>src</code> with a different Tableau Public view link.
+
+      <ol>
+        <li>
+          League of Legends
+          <ul>
+            <li>Mostly ranked + ARAM with friends</li>
+            <li>I enjoy learning matchups, macro decisions, and objective control</li>
+            <li>I like roles that reward communication (jungle / support)</li>
+          </ul>
+        </li>
+        <li>
+          Delta Force
+          <ul>
+            <li>Team-based tactical gameplay</li>
+            <li>Clear callouts and coordination matter more than raw mechanics</li>
+          </ul>
+        </li>
+        <li>
+          Other games I rotate through
+          <ul>
+            <li>Single‑player story games when I want to relax</li>
+            <li>Co‑op games when I want light teamwork</li>
+          </ul>
+        </li>
+      </ol>
+
+      <hr>
+
+      <section id="interests">
+        <h2>Gaming highlights</h2>
+        <p class="small">A screenshot + two videos that match the games above.</p>
+
+        <div class="media-grid">
+          <div>
+            <img class="heroimg" src="../assets/delta-force.png" alt="Delta Force themed image">
+            <p class="small">Image file is hosted with this site (not from a theme).</p>
+          </div>
+          <div>
+            <iframe class="video" src="https://www.youtube.com/embed/-USgpvI2WvM" title="League of Legends - Still Here"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+            <div style="height:12px"></div>
+            <iframe class="video" src="https://www.youtube.com/embed/vEPZ60AnKpg" title="Delta Force trailer"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="card" id="tableau">
+      <h2>Tableau</h2>
+      <p>One interactive Tableau Public view I like exploring. Filters and tooltips should work directly on this page.</p>
+
+      <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+
+      <tableau-viz
+        id="tableauViz"
+        style="width:100%; height:640px;"
+        src="https://public.tableau.com/views/RegionalSampleWorkbook/Stocks"
+        toolbar="bottom"
+        hide-tabs>
+      </tableau-viz>
+
+      <p class="small" style="margin-top:10px;">
+        If the viz takes a moment to load, give it a second—Tableau is embedded live.
       </p>
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Steven Cheng.</div>
 </div>
-<p class="muted" style="margin-top:14px; color: rgba(229,231,235,0.75);">
-      Note: This scratch page links back to the professional pages, but the professional pages do not link here.
-    </p>
-</div>
+
 </body>
 </html>

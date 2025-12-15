@@ -1,251 +1,143 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Small Web App: Micro-Quiz</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini App • Quick Guess</title>
   <style>
-    :root {
-      --bg: #0b1220;
-      --panel: rgba(255,255,255,0.92);
-      --text: #0f172a;
-      --muted: rgba(15,23,42,0.72);
-      --accent: #2563eb;
-      --good: #10b981;
-      --warn: #f59e0b;
-      --bad: #ef4444;
-      --radius: 18px;
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 600px at 15% 10%, rgba(59,130,246,0.22), transparent 60%),
+                  radial-gradient(900px 600px at 85% 10%, rgba(34,197,94,0.16), transparent 60%),
+                  #0b1220;
+      color: rgba(255,255,255,0.92);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
     }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(37,99,235,.25), transparent 55%),
-                  radial-gradient(1000px 600px at 80% 15%, rgba(16,185,129,.20), transparent 55%),
-                  var(--bg);
-      color: #e5e7eb;
-      line-height: 1.55;
-      padding: 28px 18px 60px;
+    .card{
+      width: min(720px, 100%);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      backdrop-filter: blur(12px);
     }
-    .wrap { max-width: 900px; margin: 0 auto; }
-    .topbar {
-      display: flex; justify-content: space-between; align-items: center; gap: 10px;
-      padding: 14px 16px; border-radius: var(--radius);
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(6px);
+    h1{ margin: 0 0 8px; font-size: 22px; letter-spacing: .02em; }
+    p{ margin: 8px 0; color: rgba(255,255,255,0.78); line-height: 1.6; }
+    .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top: 14px; }
+    input{
+      flex: 1;
+      min-width: 180px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.20);
+      color: rgba(255,255,255,0.92);
+      outline: none;
+      font-size: 16px;
     }
-    a { color: #93c5fd; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .panel {
-      margin-top: 16px;
-      background: var(--panel);
-      color: var(--text);
-      border-radius: var(--radius);
-      padding: 18px;
-      border: 1px solid rgba(15,23,42,0.10);
-    }
-    h1 { font-size: 22px; margin: 0; }
-    .muted { color: var(--muted); }
-    .q {
-      font-weight: 700; font-size: 18px; margin: 8px 0 10px;
-    }
-    .choices { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    @media (min-width: 720px) { .choices { grid-template-columns: 1fr 1fr; } }
-    button {
-      appearance: none;
-      border: 1px solid rgba(15,23,42,0.14);
-      background: #fff;
-      padding: 12px 12px;
-      border-radius: 14px;
+    button, a.btn{
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.92);
       cursor: pointer;
-      text-align: left;
-      font-size: 15px;
-      transition: transform .08s ease-in-out, border-color .08s ease-in-out;
+      text-decoration: none;
+      font-weight: 650;
     }
-    button:hover { transform: translateY(-1px); border-color: rgba(37,99,235,0.35); }
-    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-    .pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(37,99,235,0.10);
-      border: 1px solid rgba(37,99,235,0.22);
-      color: #1d4ed8;
-      padding: 6px 10px; border-radius: 999px;
-      font-size: 13px;
+    button:hover, a.btn:hover{ background: rgba(255,255,255,0.16); }
+    .status{
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.82);
+      min-height: 52px;
     }
-    .status { margin-top: 10px; padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(15,23,42,0.10); }
-    .status.good { background: rgba(16,185,129,0.10); }
-    .status.warn { background: rgba(245,158,11,0.12); }
-    .status.bad  { background: rgba(239,68,68,0.10); }
-    .controls { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
-    .controls button { text-align: center; width: auto; }
-    .primary { border-color: rgba(37,99,235,0.35); background: rgba(37,99,235,0.08); }
+    .small{ font-size: 13px; opacity: .75; margin-top: 14px; }
+    .pill{
+      display:inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      margin-left: 6px;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <h1>Small Web App: “Social Media Safety Micro‑Quiz”</h1>
-      <div class="row">
-        <a href="scratch.html">Back to Scratch Page</a>
-        <span class="pill" id="scorePill">Score: 0</span>
-        <span class="pill" id="qPill">Question: 1/5</span>
-      </div>
+  <div class="card">
+    <h1>Quick Guess <span class="pill" id="triesPill">0 tries</span></h1>
+    <p>
+      Guess the secret number between <strong>1</strong> and <strong>100</strong>.
+      I’ll tell you whether you’re too high or too low.
+    </p>
+
+    <div class="row">
+      <input id="guess" type="number" min="1" max="100" placeholder="Enter a number (1–100)" />
+      <button id="btnGuess">Guess</button>
+      <button id="btnReset">Reset</button>
+      <a class="btn" href="scratch.html">Back</a>
     </div>
 
-    <div class="panel">
-      <div class="muted">
-        A tiny interactive quiz built with AI assistance, then refined by you. Single page: HTML + CSS + JS in one file.
-      </div>
-
-      <div class="q" id="questionText"></div>
-      <div class="choices" id="choices"></div>
-
-      <div class="status warn" id="statusBox" style="display:none;"></div>
-
-      <div class="controls">
-        <button class="primary" id="nextBtn" style="display:none;">Next Question</button>
-        <button id="restartBtn">Restart</button>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h2 style="margin:0 0 8px; font-size:16px;">What this demonstrates</h2>
-      <ul class="muted" style="margin:0;">
-        <li>DOM updates without frameworks</li>
-        <li>State management (score, progress)</li>
-        <li>Simple UI that remains readable and “professional”</li>
-      </ul>
-    </div>
+    <div class="status" id="status">New game started. Good luck.</div>
+    <div class="small">Tip: press Enter to submit.</div>
   </div>
 
   <script>
-    // Simple data-driven quiz bank.
-    const QUESTIONS = [
-      {
-        q: "You receive a DM with a link that says: “urgent, check this now.” What is the best first step?",
-        choices: [
-          { a: "Click immediately — urgency means it’s important.", ok: false, why: "Urgency is a common phishing tactic." },
-          { a: "Verify the sender and preview the link destination before clicking.", ok: true, why: "Verify identity + inspect links to reduce risk." },
-          { a: "Forward it to friends to see if they know what it is.", ok: false, why: "Spreads risk if it is malicious." },
-          { a: "Reply with your email and password so they can “fix it.”", ok: false, why: "Never share credentials." }
-        ]
-      },
-      {
-        q: "A post makes you feel stressed because it’s loud/fast and keeps auto-playing. What is a good action?",
-        choices: [
-          { a: "Turn on reduced motion / disable autoplay where possible.", ok: true, why: "Control sensory input and pacing." },
-          { a: "Keep scrolling faster so it ends sooner.", ok: false, why: "This can increase stress and overload." },
-          { a: "Lower screen brightness only.", ok: false, why: "Brightness alone may not address motion/audio triggers." },
-          { a: "Ignore settings — there’s nothing you can do.", ok: false, why: "Most platforms offer settings or workarounds." }
-        ]
-      },
-      {
-        q: "You want to post a photo. Which approach best protects privacy?",
-        choices: [
-          { a: "Post it publicly; privacy is overrated.", ok: false, why: "Public posts can spread beyond your control." },
-          { a: "Remove location metadata, review background details, and use limited audience settings.", ok: true, why: "This reduces accidental disclosure." },
-          { a: "Include your address so friends can visit.", ok: false, why: "Avoid sharing sensitive personal info." },
-          { a: "Tag everyone you know automatically.", ok: false, why: "Tagging expands reach and can annoy others." }
-        ]
-      },
-      {
-        q: "Someone comments something rude. What is the most constructive first response?",
-        choices: [
-          { a: "Respond with an insult so they learn a lesson.", ok: false, why: "Escalation rarely helps." },
-          { a: "Block/report if needed and disengage; consider a calm boundary if you respond.", ok: true, why: "Safety and boundaries come first." },
-          { a: "Argue until they apologize.", ok: false, why: "Time sink and stress." },
-          { a: "Share the comment everywhere to shame them.", ok: false, why: "Can amplify conflict." }
-        ]
-      },
-      {
-        q: "A platform asks for microphone access for a simple text feature. What should you do?",
-        choices: [
-          { a: "Allow every permission — it’s required.", ok: false, why: "Least privilege is safer." },
-          { a: "Deny or grant only what’s needed; you can revisit permissions later.", ok: true, why: "Minimize data exposure." },
-          { a: "Install random permission “booster” extensions.", ok: false, why: "Untrusted extensions can add risk." },
-          { a: "Share your device settings screenshot publicly for advice.", ok: false, why: "Screenshots can reveal sensitive info." }
-        ]
+    let secret = 0;
+    let tries = 0;
+
+    function newGame(){
+      secret = Math.floor(Math.random() * 100) + 1;
+      tries = 0;
+      document.getElementById('triesPill').textContent = '0 tries';
+      document.getElementById('status').textContent = 'New game started. Good luck.';
+      const input = document.getElementById('guess');
+      input.value = '';
+      input.focus();
+    }
+
+    function setStatus(msg){
+      document.getElementById('status').textContent = msg;
+    }
+
+    function submitGuess(){
+      const input = document.getElementById('guess');
+      const val = Number(input.value);
+
+      if (!Number.isFinite(val) || val < 1 || val > 100){
+        setStatus('Please enter an integer between 1 and 100.');
+        return;
       }
-    ];
 
-    let idx = 0;
-    let score = 0;
-    let locked = false;
+      tries += 1;
+      document.getElementById('triesPill').textContent = tries + (tries === 1 ? ' try' : ' tries');
 
-    const qText = document.getElementById("questionText");
-    const choicesEl = document.getElementById("choices");
-    const statusBox = document.getElementById("statusBox");
-    const nextBtn = document.getElementById("nextBtn");
-    const restartBtn = document.getElementById("restartBtn");
-    const scorePill = document.getElementById("scorePill");
-    const qPill = document.getElementById("qPill");
-
-    function render() {
-      locked = false;
-      statusBox.style.display = "none";
-      nextBtn.style.display = "none";
-      choicesEl.innerHTML = "";
-
-      const item = QUESTIONS[idx];
-      qText.textContent = item.q;
-      qPill.textContent = `Question: ${idx + 1}/${QUESTIONS.length}`;
-      scorePill.textContent = `Score: ${score}`;
-
-      item.choices.forEach((c) => {
-        const btn = document.createElement("button");
-        btn.textContent = c.a;
-        btn.addEventListener("click", () => choose(c, btn));
-        choicesEl.appendChild(btn);
-      });
-    }
-
-    function choose(choice, btn) {
-      if (locked) return;
-      locked = true;
-
-      // Disable all buttons
-      [...choicesEl.querySelectorAll("button")].forEach(b => b.disabled = true);
-
-      const ok = choice.ok;
-      if (ok) score += 1;
-
-      // Provide feedback
-      statusBox.className = "status " + (ok ? "good" : "bad");
-      statusBox.textContent = (ok ? "Correct. " : "Not quite. ") + choice.why;
-      statusBox.style.display = "block";
-
-      scorePill.textContent = `Score: ${score}`;
-
-      nextBtn.style.display = "inline-block";
-      nextBtn.textContent = (idx === QUESTIONS.length - 1) ? "See Results" : "Next Question";
-    }
-
-    nextBtn.addEventListener("click", () => {
-      if (idx < QUESTIONS.length - 1) {
-        idx += 1;
-        render();
+      if (val === secret){
+        setStatus('Correct! ' + secret + ' is the secret number. You got it in ' + tries + ' tries.');
+      } else if (val < secret){
+        setStatus('Too low. Try a higher number.');
       } else {
-        showResults();
+        setStatus('Too high. Try a lower number.');
       }
-    });
-
-    function showResults() {
-      choicesEl.innerHTML = "";
-      nextBtn.style.display = "none";
-      statusBox.style.display = "block";
-      statusBox.className = "status warn";
-
-      const pct = Math.round((score / QUESTIONS.length) * 100);
-      statusBox.innerHTML = `<strong>Finished.</strong> You scored <strong>${score}/${QUESTIONS.length}</strong> (${pct}%).<br>
-        If you want, customize the questions to match your course or your Social Media Academy content.`;
+      input.select();
     }
 
-    restartBtn.addEventListener("click", () => {
-      idx = 0;
-      score = 0;
-      render();
+    document.getElementById('btnGuess').addEventListener('click', submitGuess);
+    document.getElementById('btnReset').addEventListener('click', newGame);
+    document.getElementById('guess').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitGuess();
     });
 
-    render();
+    newGame();
   </script>
 </body>
 </html>
